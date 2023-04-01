@@ -5,7 +5,16 @@ import Item         from '../models/Item.js';
 // @route   GET /items
 // @access  Public
 export const getItems = asyncHandler(async (req, res, next) => { 
-  res.status(200).json(res);
+  const items = await Item.find(req.params.id);
+
+  if (!items) {
+    return next(new Error(`Items that end with '${req.params.id.slice(-6)}' not found`));
+  }
+
+  res.status(200).json({
+    success: true,
+    data: items,
+  });
 });
 
 // @desc    Create an Item

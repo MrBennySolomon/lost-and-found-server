@@ -49,10 +49,7 @@ export const getItem = asyncHandler(async (req, res, next) => {
 // @route   PUT /items/:id
 // @access  Public
 export const updateItem = asyncHandler(async (req, res, next) => {
-  const item = await Item.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
+  const item = await Item.findByIdAndUpdate(req.params.id, req.body);
 
   if (!item) {
     return next(new Error(`Item that end with '${req.params.id.slice(-6)}' not found`));

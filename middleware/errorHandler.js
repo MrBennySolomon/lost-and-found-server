@@ -2,10 +2,7 @@ import ErrorResponse from '../utils/ErrorResponse.js';
 
 const errorHandler = (error, req, res, next) => {
   let err = { ...error };
-
   err.message = error.message;
-
-  console.log(error.stack.red);
 
   // Mongoose bad ObjectId
   if (error.name === 'CastError') {

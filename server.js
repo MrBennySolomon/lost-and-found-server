@@ -5,7 +5,6 @@ import morgan       from 'morgan';
 import items        from './routes/itemsRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
 import connectDB    from './config/db.js';
-import bcrypt       from 'bcryptjs';
 
 dotenv.config({ path: './config/config.env' });
 

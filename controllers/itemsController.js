@@ -1,6 +1,5 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Item         from '../models/Item.js';
-// import multer       from 'multer';
 
 // @desc    Get all Items
 // @route   GET /items
@@ -79,12 +78,4 @@ export const deleteItem = asyncHandler(async (req, res, next) => {
     success: true,
     data: {}
   });
-});
-
-// @desc    Upload an Item
-// @route   POST /items/upload
-// @access  Public
-export const uploadItem = asyncHandler(async (req, res, next) => {
-  res.send();
-
 });

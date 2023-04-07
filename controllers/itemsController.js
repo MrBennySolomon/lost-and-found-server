@@ -1,6 +1,6 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Item         from '../models/Item.js';
-import multer       from 'multer';
+// import multer       from 'multer';
 
 // @desc    Get all Items
 // @route   GET /items
@@ -86,4 +86,5 @@ export const deleteItem = asyncHandler(async (req, res, next) => {
 // @access  Public
 export const uploadItem = asyncHandler(async (req, res, next) => {
   res.send();
+
 });

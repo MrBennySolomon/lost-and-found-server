@@ -1,4 +1,4 @@
-import multer            from 'multer';
+// import multer            from 'multer';
 import path              from 'path';
 import express           from 'express';
 import cors              from 'cors';
@@ -18,13 +18,15 @@ connectDB();
 
 const app = express();
 
-const upload = multer({
-  dest: 'files'
-});
+// const upload = multer({});
 
-app.post('/items/upload', upload.single('file'), (req, res) => {
-  res.send();
-});
+// app.post('/items/upload', upload.single('file'), async (req, res) => {
+//   req.file = req.file.buffer;
+//   await req.item.save();
+//   res.send();
+// }, (error, req, res, next) => {
+//   res.status(400).send({error: error.message});
+// });
 
 app.use(express.json());
 app.use(cors());

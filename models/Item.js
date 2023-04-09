@@ -10,6 +10,9 @@ const ItemSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please add an item location'],
   }
+  // file: {
+  //   type:Buffer
+  // }
 },
   {
     toJSON: {

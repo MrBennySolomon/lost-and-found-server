@@ -1,5 +1,6 @@
 import path              from 'path';
 import express           from 'express';
+import multer            from 'multer';
 import cors              from 'cors';
 import dotenv            from 'dotenv';
 import morgan            from 'morgan';
@@ -20,12 +21,29 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const storage = multer.diskStorage({
+  destination: function(req, file, callback) {
+    callback(null, __dirname + "/uploads");
+  },
+  filename: function(req, file, callback) {
+    callback(null, file.originalname);
+  }
+});
+
+const uploads = multer({storage: storage});
+
+app.post("/uploads", uploads.array("files"), (req, res) => {
+  console.log(req.body);
+  console.log(req.files);
+  res.json({status: "files received"});
+});
+
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
-//Set static folder
-// app.use(express.static(path.join(__dirname, 'public')));
+// Serve files in the "uploads" directory on a GET request to "/uploads"
+app.use('/uploads', express.static('uploads'));
 
 app.get('/', (req, res) => {
   res.json({

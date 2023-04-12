@@ -8,6 +8,8 @@ import items             from './routes/itemsRoutes.js';
 import errorHandler      from './middleware/errorHandler.js';
 import connectDB         from './config/db.js';
 import { fileURLToPath } from 'url';
+import fs                from 'fs';
+import { rimraf }        from 'rimraf';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -31,6 +33,29 @@ const storage = multer.diskStorage({
 });
 
 const uploads = multer({storage: storage});
+
+app.delete("/uploads", uploads.array("files"), (req, res) => {
+  console.log('inside delete');
+  console.log(req.body);
+  console.log(req.files);
+  
+  if (req.files.length === 0) {
+    const uploadsDir = __dirname + "/uploads";
+    fs.readdir(uploadsDir, function(err, files) {
+      for (let i = 0; i < files.length; i++) {
+        if (files[i].startsWith(req.body.name)) {
+          fs.rm(`${uploadsDir}/${files[i]}`, (err) => {
+            if (err) {
+              console.error(err);
+            } else {
+              console.log(`${files[i]} was deleted successfully!`);
+            }
+          });
+        }
+      }
+    })
+  }
+})
 
 app.post("/uploads", uploads.array("files"), (req, res) => {
   console.log(req.body);

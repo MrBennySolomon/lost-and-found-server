@@ -35,7 +35,6 @@ const storage = multer.diskStorage({
 const uploads = multer({storage: storage});
 
 app.delete("/uploads", uploads.array("files"), (req, res) => {
-  console.log('inside delete');
   console.log(req.body);
   console.log(req.files);
   

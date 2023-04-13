@@ -2,20 +2,17 @@ import crypto from 'crypto';
 import ErrorResponse from '../utils/errorResponse.js';
 import sendTokenResponse from '../utils/sendTokenResponse.js';
 import asyncHandler from '../middleware/asyncHandler.js';
-import sendEmail from '../utils/sendEmail.js';
 import User from '../models/User.js';
 
 // @desc    Register user
 // @route   POST /auth/register
 // @access  Public
 export const registerUser = asyncHandler(async (req, res, next) => {
-  const { name, email, password, role } = req.body;
-
+  const { email, password } = req.body;
+  console.log('inside registerUser');
   const user = await User.create({
-    name,
     email,
     password,
-    role
   });
 
   // Send token to client

@@ -5,6 +5,8 @@ import cors              from 'cors';
 import dotenv            from 'dotenv';
 import morgan            from 'morgan';
 import items             from './routes/itemsRoutes.js';
+import auth              from './routes/authRoutes.js';
+import users             from './routes/userRoutes.js';
 import errorHandler      from './middleware/errorHandler.js';
 import connectDB         from './config/db.js';
 import { fileURLToPath } from 'url';

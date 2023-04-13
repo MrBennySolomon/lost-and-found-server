@@ -11,17 +11,19 @@ import User from '../models/User.js';
 
 import { protect, authorize } from './../middleware/authMiddleware.js';
 import advancedResults from '../middleware/advancedResults.js';
+import { loginUser } from '../controllers/authController.js';
 
 
 const router = express.Router({ mergeParams: true });
 
-router.use(protect);
-router.use(authorize('admin'));
+//router.use(protect);
+//router.use(authorize('admin'));
 
 router
   .route('/')
   .get(advancedResults(User), getUsers)
-  .post(createUser);
+  .post(createUser)
+  .post(loginUser)
 
 router
   .route('/:id')

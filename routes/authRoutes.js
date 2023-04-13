@@ -4,10 +4,6 @@ import {
   loginUser,
   logout,
   getCurrentUser,
-  forgotPassword,
-  resetPassword,
-  updateDetails,
-  updatePassword
 } from '../controllers/authController.js';
 
 import { protect } from './../middleware/authMiddleware.js';

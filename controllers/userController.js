@@ -34,12 +34,13 @@ export const getUser = asyncHandler(async (req, res, next) => {
 // @access  Private/Admin
 export const createUser = asyncHandler(async (req, res, next) => {
   const user = await User.create(req.body);
-
+  console.log('inside create user');
+  const token = user.getSignedJwtToken();
   res
     .status(201)
     .json({
       success: true,
-      data: user
+      data: token
     });
 });
 

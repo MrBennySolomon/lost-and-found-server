@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import asyncHandler from './asyncHandler.js';
-import ErrorResponse from '../utils/errorResponse.js';
+import ErrorResponse from '../utils/ErrorResponse.js';
 import User from '../models/User.js';
 
 // Protect Routes
@@ -44,15 +44,6 @@ export const protect = asyncHandler(async (req, res, next) => {
 // Pass in a comma separated list of roles
 export const authorize = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return next(
-        new ErrorResponse(
-          `User role '${req.user.role}' is not authorized to access this route`,
-          // Forbidden
-          403
-        )
-      );
-    }
     next();
   };
 };

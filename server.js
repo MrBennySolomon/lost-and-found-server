@@ -76,6 +76,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/items', items);
+app.use('/auth',  auth);
+app.use('/users', users);
 app.use(errorHandler);
 
 const PORT   = process.env.PORT || 5000;

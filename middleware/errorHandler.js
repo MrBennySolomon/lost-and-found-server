@@ -1,4 +1,3 @@
-// import ErrorResponse from '../utils/errorResponse.js';
 import ErrorResponse from "../utils/errorResponse.js";
 
 const errorHandler = (error, req, res, next) => {

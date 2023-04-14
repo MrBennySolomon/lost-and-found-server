@@ -6,7 +6,14 @@ import User from '../models/User.js';
 // @route   GET /users
 // @access  Private/Admin
 export const getUsers = asyncHandler(async (req, res, next) => {
-  res.status(200).json(res.advancedResults);
+  const users = await User.find();
+  res
+    .status(200)
+    .json({
+      success: true,
+      data: users
+    });
+  // res.status(200).json(res.advancedResults);
 });
 
 // @desc    Get a single user
@@ -48,15 +55,15 @@ export const createUser = asyncHandler(async (req, res, next) => {
 // @route   PUT /users/:id
 // @access  Private/Admin
 export const updateUser = asyncHandler(async (req, res, next) => {
-  let user = await User.findById(req.params.id);
+  // let user = await User.findById(req.params.id);
+  // console.log('user', user);
+  // if (!user) {
+  //   return next(
+  //     new ErrorResponse(`No user found with id of ${req.params.id}`, 404)
+  //   );
+  // }
 
-  if (!user) {
-    return next(
-      new ErrorResponse(`No user found with id of ${req.params.id}`, 404)
-    );
-  }
-
-  user = await User.findByIdAndUpdate(req.params.id, req.body, {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
   });

@@ -9,7 +9,6 @@ import User from '../models/User.js';
 // @access  Public
 export const registerUser = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
-  console.log('inside registerUser');
   const user = await User.create({
     email,
     password,

@@ -10,7 +10,7 @@ import {
 import User from '../models/User.js';
 
 import { protect, authorize } from './../middleware/authMiddleware.js';
-import advancedResults from '../middleware/advancedResults.js';
+// import advancedResults from '../middleware/advancedResults.js';
 import { loginUser } from '../controllers/authController.js';
 
 
@@ -21,7 +21,7 @@ const router = express.Router({ mergeParams: true });
 
 router
   .route('/')
-  .get(advancedResults(User), getUsers)
+  .get(getUsers)
   .post(createUser)
   .post(loginUser)
 
@@ -29,6 +29,6 @@ router
   .route('/:id')
   .get(getUser)
   .put(updateUser)
-  .delete(deleteUser);
+  .delete(deleteUser)
 
 export default router;

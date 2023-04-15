@@ -9,6 +9,10 @@ const ItemSchema = new mongoose.Schema({
   location: {
     type: String,
     required: [true, 'Please add an item location'],
+  },
+  userId: {
+    type: String,
+    required: [true, 'Please add an user id'],
   }
 },
   {

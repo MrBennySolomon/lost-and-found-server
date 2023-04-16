@@ -84,15 +84,17 @@ app.use('/users', users);
 app.use(errorHandler);
 
 const PORT   = process.env.PORT || 5000;
-const server = app.listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`));
 
-// const SSL_KEY_PATH = './config/ssl/privatekey.pem';
-// const SSL_CERT_PATH = './config/ssl/fullchain.pem';
+// const server = https.createServer(app).listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`));
 
-// const sslOptions = {
-//   key: fs.readFileSync(SSL_KEY_PATH),
-//   cert: fs.readFileSync(SSL_CERT_PATH),
-// };
+const options ={
+  key:fs.readFileSync(__dirname + '/key.pem'),
+  cert:fs.readFileSync(__dirname + '/cert.pem') 
+}
+
+const sslserver =https.createServer(options,app)
+
+sslserver.listen(PORT,()=>{console.log(`Secure Server is listening on port ${PORT}`)});
 
 // https.createServer(sslOptions, app).listen(PORT, () => {
 //   console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`);

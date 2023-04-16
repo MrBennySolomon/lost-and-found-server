@@ -12,6 +12,7 @@ import connectDB         from './config/db.js';
 import { fileURLToPath } from 'url';
 import fs                from 'fs';
 import { rimraf }        from 'rimraf';
+import https             from 'https';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -84,3 +85,15 @@ app.use(errorHandler);
 
 const PORT   = process.env.PORT || 5000;
 const server = app.listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`));
+
+// const SSL_KEY_PATH = './config/ssl/privatekey.pem';
+// const SSL_CERT_PATH = './config/ssl/fullchain.pem';
+
+// const sslOptions = {
+//   key: fs.readFileSync(SSL_KEY_PATH),
+//   cert: fs.readFileSync(SSL_CERT_PATH),
+// };
+
+// https.createServer(sslOptions, app).listen(PORT, () => {
+//   console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+// });

@@ -2,6 +2,10 @@ import jwt from 'jsonwebtoken';
 import asyncHandler from './asyncHandler.js';
 import ErrorResponse from '../utils/ErrorResponse.js';
 import User from '../models/User.js';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../config/config.env' });
+
 
 // Protect Routes
 export const protect = asyncHandler(async (req, res, next) => {
@@ -28,7 +32,7 @@ export const protect = asyncHandler(async (req, res, next) => {
 
   try {
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, `${process.env.JWT_SECRET}`);
 
     // console.log(decoded);
 

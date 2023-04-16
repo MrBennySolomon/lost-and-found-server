@@ -10,8 +10,6 @@ import errorHandler      from './middleware/errorHandler.js';
 import connectDB         from './config/db.js';
 import { fileURLToPath } from 'url';
 import fs                from 'fs';
-// import { rimraf }        from 'rimraf';
-// import https             from 'https';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -64,11 +62,6 @@ app.post("/uploads", uploads.array("files"), (req, res) => {
   res.json({status: "files received"});
 });
 
-// if (process.env.NODE_ENV !== 'production') {
-//   app.use(morgan('dev'));
-// }
-
-// Serve files in the "uploads" directory on a GET request to "/uploads"
 app.use('/uploads', express.static('uploads'));
 
 app.get('/', (req, res) => {
@@ -86,12 +79,3 @@ const PORT   = process.env.PORT || 5000;
 
 const server = app.listen(PORT,
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
-
-// const options ={
-//   key:fs.readFileSync(__dirname + '/cert/key.pem'),
-//   cert:fs.readFileSync(__dirname + '/cert/cert.pem') 
-// }
-
-// const sslserver =https.createServer(options,app)
-
-// sslserver.listen(PORT,()=>{console.log(`Secure Server is listening on port ${PORT}`)});

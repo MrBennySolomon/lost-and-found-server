@@ -3,7 +3,6 @@ import express           from 'express';
 import multer            from 'multer';
 import cors              from 'cors';
 import dotenv            from 'dotenv';
-import morgan            from 'morgan';
 import items             from './routes/itemsRoutes.js';
 import auth              from './routes/authRoutes.js';
 import users             from './routes/userRoutes.js';
@@ -11,8 +10,8 @@ import errorHandler      from './middleware/errorHandler.js';
 import connectDB         from './config/db.js';
 import { fileURLToPath } from 'url';
 import fs                from 'fs';
-import { rimraf }        from 'rimraf';
-import https             from 'https';
+// import { rimraf }        from 'rimraf';
+// import https             from 'https';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -65,9 +64,9 @@ app.post("/uploads", uploads.array("files"), (req, res) => {
   res.json({status: "files received"});
 });
 
-if (process.env.NODE_ENV !== 'production') {
-  app.use(morgan('dev'));
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   app.use(morgan('dev'));
+// }
 
 // Serve files in the "uploads" directory on a GET request to "/uploads"
 app.use('/uploads', express.static('uploads'));
@@ -85,17 +84,14 @@ app.use(errorHandler);
 
 const PORT   = process.env.PORT || 5000;
 
-// const server = https.createServer(app).listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`));
+const server = app.listen(PORT,
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
 
-const options ={
-  key:fs.readFileSync(__dirname + '/cert/key.pem'),
-  cert:fs.readFileSync(__dirname + '/cert/cert.pem') 
-}
+// const options ={
+//   key:fs.readFileSync(__dirname + '/cert/key.pem'),
+//   cert:fs.readFileSync(__dirname + '/cert/cert.pem') 
+// }
 
-const sslserver =https.createServer(options,app)
+// const sslserver =https.createServer(options,app)
 
-sslserver.listen(PORT,()=>{console.log(`Secure Server is listening on port ${PORT}`)});
-
-// https.createServer(sslOptions, app).listen(PORT, () => {
-//   console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-// });
+// sslserver.listen(PORT,()=>{console.log(`Secure Server is listening on port ${PORT}`)});

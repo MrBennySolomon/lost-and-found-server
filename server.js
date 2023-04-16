@@ -88,8 +88,8 @@ const PORT   = process.env.PORT || 5000;
 // const server = https.createServer(app).listen(PORT, console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`));
 
 const options ={
-  key:fs.readFileSync(__dirname + '/key.pem'),
-  cert:fs.readFileSync(__dirname + '/cert.pem') 
+  key:fs.readFileSync(__dirname + '/config/ssl/key.pem'),
+  cert:fs.readFileSync(__dirname + '/config/ssl/cert.pem') 
 }
 
 const sslserver =https.createServer(options,app)

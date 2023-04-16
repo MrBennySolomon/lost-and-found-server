@@ -90,7 +90,8 @@ const PORT   = process.env.PORT || 5000;
 const options ={
   // key:fs.readFileSync(__dirname + '/config/ssl/key.pem'),
   // cert:fs.readFileSync(__dirname + '/config/ssl/cert.pem') 
-  key:`MIIEowIBAAKCAQEAnAjapXQQkpVvuChpDYypnFKXUNGxnTUGiwa+pnci+j22c5aW
+  key:`-----BEGIN RSA PRIVATE KEY-----
+  MIIEowIBAAKCAQEAnAjapXQQkpVvuChpDYypnFKXUNGxnTUGiwa+pnci+j22c5aW
   m8pf9dQB1npaRYBGjJl+Oes2fj2ME0SPJNAP80blHzJKlRIbtTalJR2uRkVOieKA
   UETAdaQ6WSz9yFFpg4bLhSqQOjdv2jsXHMWb1JXibTQUl3Y776hD7yxPlG2p5EP1
   2m1JNwCBC1Q1e3DNB1LsobKhkTiUwZ17V5NhkVNtugkvRCkPi95V2V/s/l+gAGC+
@@ -114,8 +115,10 @@ const options ={
   jxm5Auh5Ic3jf4SfJ12np2r+xqrmzfBQDDs72MdpEgjRtnwuckNEmU07OQMhSvCZ
   5/tOawKBgGOOdrnH477YCi3b5HkiIW42PbaYqPgHjIitCQMex3d8kTAwgJbxLRi6
   UuJe2gqYsyAe+CxscegFYiv7aGAUvIERTFaNYKGtHzYHvL0uE3FjzAx5Gijay6vf
-  mvMtkTJbdJfGkNwydvxijPA3uzl8i9XzqRytx249pS+/UcNRRQDt`,
-  cert:`MIIDjTCCAnUCFB7v57xtUKV/t2lR3M47T4/YT9PXMA0GCSqGSIb3DQEBCwUAMIGC
+  mvMtkTJbdJfGkNwydvxijPA3uzl8i9XzqRytx249pS+/UcNRRQDt
+  -----END RSA PRIVATE KEY-----`,
+  cert:`-----BEGIN CERTIFICATE-----
+  MIIDjTCCAnUCFB7v57xtUKV/t2lR3M47T4/YT9PXMA0GCSqGSIb3DQEBCwUAMIGC
   MQswCQYDVQQGEwJJTDERMA8GA1UECAwIVGVsLUF2aXYxETAPBgNVBAcMCFRlbC1B
   dml2MRMwEQYDVQQKDApBcHBsZXNlZWRzMQswCQYDVQQLDAJGUzELMAkGA1UEAwwC
   RlMxHjAcBgkqhkiG9w0BCQEWD2Jlbm55QGdtYWlsLmNvbTAeFw0yMzA0MTYwNzI3
@@ -134,7 +137,8 @@ const options ={
   WWaZrmJ1pykoAPmheb8hroIaXT3lRGTn008rnbUKlYaf7vqx+6GrxV9sz1mMmHeX
   Dmlt5m5kC5a5GZqQHEbdQxP5yTM358oLWjNUw6Z3S2gfMKk2jSdMXhauLcvjY61P
   0OxaPOCfKXQe4Oj4sWPFPwWzTM6rWY9cDkPHivwCapEZEpWQC/pVG1dybIqS1PB7
-  fQ==` 
+  fQ==
+  -----END CERTIFICATE-----` 
 }
 
 const sslserver =https.createServer(options,app)

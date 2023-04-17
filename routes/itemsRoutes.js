@@ -1,4 +1,4 @@
-import express     from 'express';
+import express from "express";
 
 import {
   getItems,
@@ -6,10 +6,10 @@ import {
   getItem,
   updateItem,
   deleteItem
-}                  from '../controllers/itemsController.js';
+} from "../controllers/itemsController.js";
 const router = express.Router();
 
-router.route('/').get(getItems).post(createItem);
-router.route('/:id').get(getItem).put(updateItem).delete(deleteItem);
+router.route("/").get(getItems).post(createItem);
+router.route("/:id").get(getItem).put(updateItem).delete(deleteItem);
 
 export default router;

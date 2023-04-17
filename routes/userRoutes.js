@@ -7,12 +7,11 @@ import {
   deleteUser
 } from '../controllers/userController.js';
 
-import User from '../models/User.js';
+// import User from '../models/User.js';
 
-import { protect, authorize } from './../middleware/authMiddleware.js';
+// import { protect, authorize } from './../middleware/authMiddleware.js';
 // import advancedResults from '../middleware/advancedResults.js';
 import { loginUser } from '../controllers/authController.js';
-
 
 const router = express.Router({ mergeParams: true });
 

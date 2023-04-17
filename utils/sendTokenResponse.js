@@ -1,3 +1,7 @@
+import dotenv            from 'dotenv';
+
+dotenv.config();
+
 // Get token from model, create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
   // Create token
@@ -11,10 +15,10 @@ const sendTokenResponse = (user, statusCode, res) => {
   }
 
   const options = {
-    expires: new Date(
-      // Convert the 30 days in the config t0 30 days in milliseconds
-      Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
-    ),
+    // expires: new Date(
+      // // Convert the 30 days in the config t0 30 days in milliseconds
+      // Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    // ),
     httpOnly: true
   };
 

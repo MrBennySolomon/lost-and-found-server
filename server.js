@@ -10,7 +10,6 @@ import errorHandler      from './middleware/errorHandler.js';
 import connectDB         from './config/db.js';
 import { fileURLToPath } from 'url';
 import fs                from 'fs';
-import {responseLogger} from './middleware/requestLogger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -20,8 +19,6 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(responseLogger);
-
 
 app.use(express.json());
 app.use(cors());

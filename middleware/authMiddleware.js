@@ -4,7 +4,7 @@ import ErrorResponse from '../utils/ErrorResponse.js';
 import User from '../models/User.js';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '../config/config.env' });
+dotenv.config();
 
 
 // Protect Routes

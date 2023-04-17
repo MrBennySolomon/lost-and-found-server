@@ -15,7 +15,7 @@ import {responseLogger} from './middleware/requestLogger.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
-dotenv.config({ path: './config/config.env' });
+dotenv.config();
 
 connectDB();
 

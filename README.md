@@ -4,7 +4,7 @@ You can save the location of all your items, and when you search them, the app c
 This repository contains the source code for the Lost & Found SERVER. It's built using Node.js, Express.js, and MongoDB.
 
 ### Diagram
-![lost-and-found-diagram-screenshot](https://user-images.githubusercontent.com/53153372/230718140-2b51598e-3f1f-4bd5-9ae1-9f27969723f4.png)
+![final-project-diagram-screenshot](https://user-images.githubusercontent.com/53153372/232776235-6f688fea-5643-4c5c-ada2-71e55dcd8cd4.png)
 
 ## Getting Started
 

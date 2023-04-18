@@ -32,9 +32,12 @@ npm install
 In order to run the project locally, you'll need to set some environment variables. Create a `config` folder in the root directory of the project, and add a file named `config.env` with the following variables:
 
 ```env
-NODE_ENV=development
-PORT=5000
 MONGO_URI=<Your MongoDB URI>
+PORT=
+NODE_ENV=
+JWT_SECRET=
+JWT_EXPIRE=
+JWT_COOKIE_EXPIRE=
 ```
 
 Make sure to replace `<Your MongoDB URI>` with the actual URI for your MongoDB instance.
